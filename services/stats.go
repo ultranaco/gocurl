@@ -52,19 +52,19 @@ func (service Stats) Print(start, end, current time.Time) {
 	service.mutex.RLock()
 	fmt.Print("\033[u\033[K")
 	fmt.Printf(`
-Time:		%v
-Progress:	`+"\033[32m"+`%s`+"\033[0m"+`
-Request:	%v
-Error:		%v`, current, progressBar, service.requestTotal, service.errorTotal)
+time:		%v
+progress:	`+"\033[32m"+`%s`+"\033[0m"+`
+request:	[%v]
+error:		[%v]`, current, progressBar, service.requestTotal, service.errorTotal)
 	if progress >= 100 {
 		fmt.Print("\n\n")
 		for code, value := range service.requestCodes {
-			fmt.Printf("Status Codes:	%v - [%v]\n", code, value)
+			fmt.Printf("status_codes:	[%v]	%v\n", value, code)
 		}
 		fmt.Print("\n")
 
 		for code, value := range service.errors {
-			fmt.Printf("Errors:		[%v] \033[37;41m%s\033[0m\n", value, code)
+			fmt.Printf("error:		[%v]	\033[37;41m%s\033[0m\n", value, code)
 		}
 		fmt.Print("\n")
 
