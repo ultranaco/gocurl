@@ -100,12 +100,8 @@ func main() {
 
 	runner.New(contents, rampage, *rampageLimit, *concurrent,
 		uri, method, httpClient, httpResponseLogger, stats, headers)
-
-	log.Printf("starting!\n\n")
 	runner.Run()
 	fmt.Print("\n\n\n\n\n\n")
 	fmt.Print("\033[6A\033[s")
 	runner.HeartBeat(runner.Start.Add(timeout))
-
-	log.Printf("completed!")
 }
