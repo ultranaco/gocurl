@@ -100,8 +100,13 @@ func main() {
 
 	runner.New(contents, rampage, *rampageLimit, *concurrent,
 		uri, method, httpClient, httpResponseLogger, stats, headers)
+
 	runner.Run()
-	fmt.Print("\n\n\n\n\n\n")
-	fmt.Print("\033[6A\033[s")
+
+	fmt.Print("\n\n\n\n\n\n\n\n")
+	fmt.Print("\033[8A\033[s")
+
 	runner.HeartBeat(runner.Start.Add(timeout))
+
+	stats.PrintSummary()
 }

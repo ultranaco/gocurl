@@ -19,8 +19,8 @@ func (service Format) TimeProgressLoad(progressInput float64) string {
 
 	var progressBar string
 
-	for iterator := 0; iterator < 50; iterator++ {
-		if iterator < (int(progress) / 2) {
+	for iterator := 0; iterator < 25; iterator++ {
+		if iterator < (int(progress) / 4) {
 			progressBar += "█"
 		} else {
 			progressBar += "▁"
