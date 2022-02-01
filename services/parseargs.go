@@ -89,6 +89,11 @@ func (parser ParseArgs) GetHeaders(inputHeaders ...string) (map[string]string, e
 	headers := make(map[string]string)
 
 	for _, inputHeader := range inputHeaders {
+
+		if inputHeader == "" {
+			continue
+		}
+
 		if patternHeader.Match([]byte(inputHeader)) {
 			matches := patternHeader.FindAllSubmatch([]byte(inputHeader), 1)
 			headers[string(matches[0][1])] = string(matches[0][2])

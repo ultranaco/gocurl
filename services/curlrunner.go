@@ -74,7 +74,7 @@ func (runner CurlRunner) rampageRun(action func()) {
 	go func() {
 		iteration := 0
 		for {
-
+			runner.stats.HitRampage(iteration, runner.concurrent)
 			action()
 			if iteration == runner.rampageLimit {
 				break
